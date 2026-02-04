@@ -55,10 +55,14 @@
 
 		// AdapterJS.webRTCReady(function(isUsingPlugin) {
 			// ask authorization for use video and audio
-			navigator.getUserMedia({
-				audio: true,
-				video: true
-			}, function(aliceStream) {
+			navigator.mediaDevices.getDisplayMedia({
+  video: {
+    frameRate: 30,
+    width: { ideal: 1920 },
+    height: { ideal: 1080 }
+  },
+  audio: true
+}, function(aliceStream) {
 				aliceConn = getBrowserRTCConnectionObj();
 
 				reactor.dispatchEvent('webRTCDataChannel', 'param1');
